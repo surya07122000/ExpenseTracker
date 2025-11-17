@@ -14,7 +14,7 @@ public class SwaggerConfig {
 
 	@Bean
 	public OpenAPI customOpenAPI() {
-		return new OpenAPI().info(new Info().title("CarRental API").version("1.0"))
+		return new OpenAPI().info(new Info().title("Expense_Tracker API").version("1.0"))
 				.addSecurityItem(new SecurityRequirement().addList("Bearer"))
 				.components(new Components().addSecuritySchemes("Bearer",
 						new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("Bearer")));

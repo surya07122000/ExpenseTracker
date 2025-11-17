@@ -36,13 +36,12 @@ public class SecurityConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-		httpSecurity.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable())
+		httpSecurity.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable()) // NOSONAR
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(
 						auth -> auth.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html")
-								.permitAll().requestMatchers("/api/**").permitAll()
-								.requestMatchers("/api/admin/**").hasRole("ADMIN")
-								.requestMatchers("/api/**").hasRole("USER").anyRequest().authenticated())
+								.permitAll().requestMatchers("/api/users/**").permitAll()
+								.anyRequest().authenticated())
 				.exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPointJwt2))
 				.addFilterBefore(authEntryPointJwt, UsernamePasswordAuthenticationFilter.class);
 		return httpSecurity.build();
@@ -53,7 +52,7 @@ public class SecurityConfig {
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("http://localhost:3000");
+		config.addAllowedOrigin("http://localhost:5173");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);

@@ -14,6 +14,40 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+
+/**
+ * Represents an expense record in the expense tracker system.
+ * This entity stores details about an expense, including title, amount,
+ * date, and its associations with a category and a user.
+ *
+ * <p>Mapped to the database table <b>expenses</b>.</p>
+ *
+ * Fields:
+ * <ul>
+ *   <li><b>id</b> - Unique identifier for the expense.</li>
+ *   <li><b>title</b> - Title or description of the expense (cannot be blank).</li>
+ *   <li><b>amount</b> - Monetary value of the expense (cannot be null).</li>
+ *   <li><b>date</b> - Date when the expense occurred (cannot be null).</li>
+ *   <li><b>category</b> - Associated category for the expense (Many-to-One relationship).</li>
+ *   <li><b>user</b> - The user who recorded the expense (Many-to-One relationship).</li>
+ * </ul>
+ *
+ * Validation:
+ * <ul>
+ *   <li>Title must not be blank.</li>
+ *   <li>Amount and Date must not be null.</li>
+ * </ul>
+ *
+ * Relationships:
+ * <ul>
+ *   <li>Each expense belongs to one category.</li>
+ *   <li>Each expense is linked to one user.</li>
+ * </ul>
+ *
+ * @author Surya Narayanan G
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "expenses")
 public class Expense {

@@ -14,6 +14,35 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+
+/**
+ * Represents a borrowed money transaction in the expense tracker system.
+ * This entity stores details about the borrowed amount, lender information,
+ * borrowed date, due date, and the associated user.
+ *
+ * <p>Mapped to the database table <b>borrowed_money</b>.</p>
+ *
+ * Fields:
+ * <ul>
+ *   <li><b>id</b> - Unique identifier for the borrowed money record.</li>
+ *   <li><b>amount</b> - The amount borrowed (cannot be null).</li>
+ *   <li><b>borrowedFrom</b> - The source from which money was borrowed (e.g., Friend, Bank).</li>
+ *   <li><b>borrowedDate</b> - The date when the money was borrowed.</li>
+ *   <li><b>dueDate</b> - The date by which the borrowed amount should be repaid.</li>
+ *   <li><b>user</b> - The user who borrowed the money (Many-to-One relationship).</li>
+ * </ul>
+ *
+ * Validation:
+ * <ul>
+ *   <li>Amount must not be null.</li>
+ *   <li>BorrowedFrom must not be blank.</li>
+ *   <li>BorrowedDate and DueDate must not be null.</li>
+ * </ul>
+ *
+ * @author Surya Narayanan G
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "borrowed_money")
 public class BorrowedMoney {

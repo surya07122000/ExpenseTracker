@@ -11,6 +11,41 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+
+/**
+ * Represents a user in the expense tracker system.
+ * This entity stores user details such as name, email, password,
+ * phone number, and role.
+ *
+ * <p>Mapped to the database table <b>users</b>.</p>
+ *
+ * Fields:
+ * <ul>
+ *   <li><b>id</b> - Unique identifier for the user.</li>
+ *   <li><b>name</b> - Full name of the user (cannot be blank, 2–50 characters).</li>
+ *   <li><b>email</b> - Email address of the user (must be valid and unique).</li>
+ *   <li><b>password</b> - Password for authentication (minimum 6 characters).</li>
+ *   <li><b>phoneNumber</b> - User's phone number (must be 10 digits and unique).</li>
+ *   <li><b>role</b> - Role assigned to the user (e.g., ADMIN, USER).</li>
+ * </ul>
+ *
+ * Validation:
+ * <ul>
+ *   <li>Name cannot be blank and must be between 2 and 50 characters.</li>
+ *   <li>Email must be valid and cannot be blank.</li>
+ *   <li>Password must be at least 6 characters and cannot be blank.</li>
+ *   <li>Phone number must be exactly 10 digits.</li>
+ * </ul>
+ *
+ * Relationships:
+ * <ul>
+ *   <li>This entity can be linked to expenses, income, and categories created by the user.</li>
+ * </ul>
+ *
+ * @author Surya Narayanan G
+ * @version 1.0
+ */
+
 @Entity
 @Table(name = "users")
 public class User{
